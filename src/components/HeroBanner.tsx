@@ -3,7 +3,7 @@ import { ArrowRight, Star } from 'lucide-react';
 
 const HeroBanner = () => {
   const scrollToPromotions = () => {
-    document.getElementById('promociones')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('combos')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -34,7 +34,7 @@ const HeroBanner = () => {
                    text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 
                    transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center space-x-2"
         >
-          <span>Ver Promociones</span>
+          <span>Ver Nuestros Combos</span>
           <ArrowRight className="w-5 h-5" />
         </button>
       </div>
