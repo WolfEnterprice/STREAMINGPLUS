@@ -23,7 +23,7 @@ const PromotionsSection = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              Plantaformas
+              Plataformas
             </span>
           </h2>
           <p className="text-gray-300 text-lg">Servicios individuales a precios increíbles</p>
