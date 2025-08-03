@@ -1,27 +1,9 @@
 import React from 'react';
 import { Play, Zap, Users, Eye } from 'lucide-react';
-
-const useVisitorCounter = () => {
-  const [visitorCount, setVisitorCount] = React.useState(15);
-
-  React.useEffect(() => {
-    // Obtener contador del localStorage
-    const savedCount = localStorage.getItem('visitorCount');
-    if (savedCount) {
-      setVisitorCount(parseInt(savedCount));
-    }
-
-    // Incrementar contador en cada visita
-    const newCount = savedCount ? parseInt(savedCount) + 1 : 16;
-    setVisitorCount(newCount);
-    localStorage.setItem('visitorCount', newCount.toString());
-  }, []);
-
-  return visitorCount;
-};
+import { useGlobalVisitorCounter } from '../hooks/useGlobalVisitorCounter';
 
 const Header = () => {
-  const visitorCount = useVisitorCounter();
+  const { visitorCount, loading } = useGlobalVisitorCounter();
 
   return (
     <header className="bg-gradient-to-r from-purple-900/95 via-pink-900/95 to-blue-900/95 backdrop-blur-sm border-b border-cyan-400/50 sticky top-0 z-50 shadow-lg shadow-purple-500/20">
@@ -42,7 +24,7 @@ const Header = () => {
             <div className="flex items-center space-x-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30 rounded-full px-4 py-2">
               <Eye className="w-4 h-4 text-green-400 animate-pulse" />
               <span className="text-green-300 font-semibold text-sm">
-                {visitorCount.toLocaleString()} visitantes
+                {loading ? '...' : visitorCount.toLocaleString()} visitantes
               </span>
             </div>
             
