@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import HeroBanner from './components/HeroBanner';
+import WarningBanner from './components/WarningBanner';
 import PromotionsSection from './components/PromotionsSection';
 import SuperCombosSection from './components/SuperCombosSection';
 import PaymentMethods from './components/PaymentMethods';
@@ -13,6 +14,7 @@ function App() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 via-pink-900 to-blue-900">
       <Header />
       <HeroBanner />
+      <WarningBanner />
       <PromotionsSection />
       <SuperCombosSection />
       <PaymentMethods />
