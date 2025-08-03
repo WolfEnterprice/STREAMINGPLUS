@@ -138,14 +138,14 @@ const SuperCombosSection = () => {
     <section id="combos" className="py-16 px-4 bg-black/30">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
+            <span className="bg-gradient-to-r from-green-300 via-cyan-400 to-blue-400 bg-clip-text text-transparent drop-shadow-lg">
               SUPER COMBOS
             </span>
           </h2>
-          <p className="text-gray-300 text-lg">1 PANTALLA DE CADA PLATAFORMA</p>
-          <p className="text-gray-400 text-sm mt-2">
-            <span className="text-yellow-400 font-semibold">IMPORTANTE:</span> Los combos incluyen Disney+ Estándar. Para Disney+ Premium agregar $3.000 adicionales
+          <p className="text-gray-200 text-xl font-semibold">1 PANTALLA DE CADA PLATAFORMA</p>
+          <p className="text-gray-300 text-sm mt-2 bg-yellow-500/20 border border-yellow-400/30 rounded-full px-4 py-2 inline-block">
+            <span className="text-yellow-300 font-semibold">IMPORTANTE:</span> Los combos incluyen Disney+ Estándar. Para Disney+ Premium agregar $3.000 adicionales
           </p>
         </div>
         

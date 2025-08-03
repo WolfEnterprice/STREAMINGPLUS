@@ -1,21 +1,52 @@
 import React from 'react';
-import { Play, Zap } from 'lucide-react';
+import { Play, Zap, Users, Eye } from 'lucide-react';
+
+const useVisitorCounter = () => {
+  const [visitorCount, setVisitorCount] = React.useState(15);
+
+  React.useEffect(() => {
+    // Obtener contador del localStorage
+    const savedCount = localStorage.getItem('visitorCount');
+    if (savedCount) {
+      setVisitorCount(parseInt(savedCount));
+    }
+
+    // Incrementar contador en cada visita
+    const newCount = savedCount ? parseInt(savedCount) + 1 : 16;
+    setVisitorCount(newCount);
+    localStorage.setItem('visitorCount', newCount.toString());
+  }, []);
+
+  return visitorCount;
+};
 
 const Header = () => {
+  const visitorCount = useVisitorCounter();
+
   return (
-    <header className="bg-black/90 backdrop-blur-sm border-b border-purple-500/30 sticky top-0 z-50">
+    <header className="bg-gradient-to-r from-purple-900/95 via-pink-900/95 to-blue-900/95 backdrop-blur-sm border-b border-cyan-400/50 sticky top-0 z-50 shadow-lg shadow-purple-500/20">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <div className="relative">
-              <Play className="w-8 h-8 text-purple-400 fill-current" />
-              <Zap className="w-4 h-4 text-yellow-400 absolute -top-1 -right-1" />
+              <Play className="w-8 h-8 text-cyan-400 fill-current drop-shadow-lg" />
+              <Zap className="w-4 h-4 text-yellow-300 absolute -top-1 -right-1 animate-pulse" />
             </div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300 bg-clip-text text-transparent drop-shadow-lg">
               STREAMING PLUS
             </h1>
           </div>
-          <nav className="hidden md:flex space-x-6">
+          
+          <div className="flex items-center space-x-6">
+            {/* Contador de visitantes */}
+            <div className="flex items-center space-x-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30 rounded-full px-4 py-2">
+              <Eye className="w-4 h-4 text-green-400 animate-pulse" />
+              <span className="text-green-300 font-semibold text-sm">
+                {visitorCount.toLocaleString()} visitantes
+              </span>
+            </div>
+            
+            <nav className="hidden md:flex space-x-6">
             <a href="#promociones" className="text-white hover:text-purple-400 transition-colors">
               Promociones
             </a>
@@ -28,7 +59,8 @@ const Header = () => {
             <a href="#faq" className="text-white hover:text-purple-400 transition-colors">
               FAQ
             </a>
-          </nav>
+            </nav>
+          </div>
         </div>
       </div>
     </header>

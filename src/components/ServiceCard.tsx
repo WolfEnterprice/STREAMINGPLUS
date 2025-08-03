@@ -6,6 +6,7 @@ interface ServiceCardProps {
   price: string;
   logo: string;
   color: string;
+  bgColor?: string;
   type: 'individual' | 'combo';
   services?: string[];
   comboId?: number;
@@ -17,6 +18,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   price, 
   logo, 
   color, 
+  bgColor,
   type, 
   services, 
   comboId,
@@ -38,39 +40,39 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   };
 
   return (
-    <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-      <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${color} flex items-center justify-center text-2xl shadow-lg`}>
-        {logo}
+    <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm border border-cyan-400/30 rounded-2xl p-6 hover:from-white/25 hover:to-white/10 hover:border-purple-400/50 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
+      <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${color} flex items-center justify-center text-lg font-bold text-white shadow-lg ring-2 ring-white/20`}>
+        {type === 'individual' ? logo : '🎯'}
       </div>
       
-      <h3 className="text-white font-bold text-center mb-2 text-lg">
+      <h3 className="text-white font-bold text-center mb-2 text-lg drop-shadow-md">
         {name}
       </h3>
       
       {note && (
-        <p className="text-yellow-400 text-xs text-center mb-2 font-semibold">
+        <p className="text-yellow-300 text-xs text-center mb-2 font-semibold bg-yellow-500/20 rounded-full px-2 py-1">
           {note}
         </p>
       )}
       
       {services && (
-        <p className="text-gray-300 text-sm text-center mb-3">
+        <p className="text-gray-200 text-sm text-center mb-3 font-medium">
           {services.join(' + ')}
         </p>
       )}
       
       <div className="text-center mb-4">
-        <span className="text-3xl font-bold text-white">
+        <span className="text-3xl font-bold bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text text-transparent drop-shadow-lg">
           ${price}
         </span>
-        <span className="text-gray-300 text-sm block">
+        <span className="text-gray-200 text-sm block font-semibold">
           {type === 'combo' ? 'Combo' : 'Mensual'}
         </span>
       </div>
       
       <button
         onClick={handlePurchase}
-        className={`w-full bg-gradient-to-r ${color} hover:shadow-lg text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2`}
+        className={`w-full bg-gradient-to-r ${color} hover:shadow-xl hover:shadow-purple-500/30 text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 ring-1 ring-white/20 hover:ring-white/40`}
       >
         <ShoppingCart className="w-4 h-4" />
         <span>Comprar</span>
