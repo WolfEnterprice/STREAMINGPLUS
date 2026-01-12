@@ -1,10 +1,6 @@
 import React from 'react';
-import { Eye } from 'lucide-react';
-import { useGlobalVisitorCounter } from '../hooks/useGlobalVisitorCounter';
 
 const Header = () => {
-  const { visitorCount, loading } = useGlobalVisitorCounter();
-
   return (
     <header className="bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50 sticky top-0 z-50 shadow-lg">
       <div className="container mx-auto px-4 py-4">
@@ -23,14 +19,6 @@ const Header = () => {
           </div>
           
           <div className="flex items-center space-x-4 md:space-x-6">
-            {/* Contador de visitantes */}
-            <div className="flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full px-3 md:px-4 py-1.5">
-              <Eye className="w-4 h-4 text-emerald-400" />
-              <span className="text-emerald-300 font-semibold text-xs md:text-sm whitespace-nowrap">
-                {loading ? '...' : `${visitorCount.toLocaleString()}`}
-              </span>
-            </div>
-            
             <nav className="hidden md:flex space-x-6">
               <a 
                 href="#promociones" 
