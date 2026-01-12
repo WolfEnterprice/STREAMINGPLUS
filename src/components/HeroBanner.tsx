@@ -16,9 +16,9 @@ const HeroBanner = () => {
         </div>
         
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-          Disfruta tus series y películas
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600 mt-2">
-            favoritas por menos
+          Disfruta tus series y
+          <span className="block">
+            películas <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600">favoritas</span> por menos
           </span>
         </h1>
         
