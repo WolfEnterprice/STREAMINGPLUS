@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Zap, MessageCircle, Clock, Shield, DollarSign } from 'lucide-react';
+import { Play, MessageCircle, Clock, Shield, DollarSign } from 'lucide-react';
 
 const Footer = () => {
   const whatsappContact = () => {
@@ -17,45 +17,42 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black/50 border-t border-purple-500/30 py-12 px-4">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-slate-900 border-t border-slate-800 py-12 px-4">
+      <div className="container mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Logo y descripción */}
           <div className="md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="relative">
-                <Play className="w-8 h-8 text-purple-400 fill-current" />
-                <Zap className="w-4 h-4 text-yellow-400 absolute -top-1 -right-1" />
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center shadow-lg">
+                <Play className="w-6 h-6 text-white fill-current" />
               </div>
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                STREAMING PLUS
+              <h3 className="text-2xl font-bold text-white">
+                STREAMING <span className="text-primary-400">PLUS</span>
               </h3>
             </div>
-            <p className="text-gray-400 mb-4 leading-relaxed">
+            <p className="text-slate-400 mb-4 leading-relaxed max-w-md">
               Tu mejor opción para disfrutar de todas las plataformas de streaming 
               al mejor precio. Servicio garantizado y atención personalizada.
             </p>
-            
           </div>
 
           {/* Información de contacto */}
           <div>
             <h4 className="text-white font-bold mb-4">Información</h4>
             <div className="space-y-3">
-              <div className="flex items-center space-x-2 text-gray-400">
-                <Clock className="w-4 h-4" />
+              <div className="flex items-start space-x-2 text-slate-400">
+                <Clock className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <span className="text-sm">Activación: Máximo 2 horas</span>
               </div>
-              <div className="flex items-center space-x-2 text-gray-400">
-                <Shield className="w-4 h-4" />
+              <div className="flex items-start space-x-2 text-slate-400">
+                <Shield className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <span className="text-sm">Servicio garantizado</span>
               </div>
-              <div className="flex items-center space-x-2 text-gray-400">
-                <MessageCircle className="w-4 h-4" />
+              <div className="flex items-start space-x-2 text-slate-400">
+                <MessageCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <span className="text-sm">
-                  Horarios de atención:
-                  De Domingo a Domingo
-                  de 9:00AM a 10:00PM 
+                  Atención: Domingo a Domingo<br />
+                  9:00 AM - 10:00 PM
                 </span>
               </div>
             </div>
@@ -64,7 +61,7 @@ const Footer = () => {
           {/* Servicios */}
           <div>
             <h4 className="text-white font-bold mb-4">Servicios</h4>
-            <ul className="space-y-2 text-gray-400 text-sm">
+            <ul className="space-y-2 text-slate-400 text-sm">
               <li>• Netflix</li>
               <li>• Disney+</li>
               <li>• HBO Max</li>
@@ -76,11 +73,11 @@ const Footer = () => {
         </div>
 
         {/* Botón de ingresos extra */}
-        <div className="text-center mt-8 mb-8">
+        <div className="text-center mb-8">
           <button
             onClick={incomeOpportunity}
-            className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 
-                     text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 
+            className="group bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 
+                     text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 
                      transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center space-x-3"
           >
             <DollarSign className="w-6 h-6" />
@@ -91,12 +88,15 @@ const Footer = () => {
           </button>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-          <p className="text-gray-400 text-sm">
+        <div className="border-t border-slate-800 pt-8 text-center">
+          <p className="text-slate-400 text-sm">
             © 2024 Streaming Plus. Todos los derechos reservados.
           </p>
-          <p className="text-gray-500 text-xs mt-2">
+          <p className="text-slate-500 text-xs mt-2">
             Servicio de reventa de cuentas premium. No somos propietarios de las marcas mencionadas.
+          </p>
+          <p className="text-slate-600 text-xs mt-3">
+            Página desarrollada por <span className="text-slate-400 font-semibold">WolfEnterprise</span>
           </p>
         </div>
       </div>

@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
+import { eventBus, AppEvents } from '../services';
+import { configService } from '../services';
 
 export const useGlobalVisitorCounter = () => {
   const [visitorCount, setVisitorCount] = useState(0);
@@ -8,6 +10,17 @@ export const useGlobalVisitorCounter = () => {
   useEffect(() => {
     const initializeCounter = async () => {
       try {
+        // Verificar configuración de Supabase
+        const validation = configService.validateConfig();
+        if (!validation.valid) {
+          console.warn('Supabase no configurado, usando modo offline');
+          // Fallback al contador local si hay error
+          const localCount = localStorage.getItem('visitorCount');
+          setVisitorCount(localCount ? parseInt(localCount) : 1247);
+          setLoading(false);
+          return;
+        }
+
         // Verificar si ya visitó esta sesión (solo para incrementar una vez por sesión)
         const hasVisited = sessionStorage.getItem('hasVisited') === 'true';
 
@@ -29,6 +42,7 @@ export const useGlobalVisitorCounter = () => {
           if (!insertError && newData) {
             setVisitorCount(newData.total_visitors);
             sessionStorage.setItem('hasVisited', 'true');
+            eventBus.emit(AppEvents.VISITOR_COUNT_UPDATED, newData.total_visitors);
           }
         } else if (!error && data) {
           // Mostrar el contador actual primero
@@ -45,6 +59,7 @@ export const useGlobalVisitorCounter = () => {
 
             if (!updateError && updatedData) {
               setVisitorCount(updatedData.total_visitors);
+              eventBus.emit(AppEvents.VISITOR_COUNT_UPDATED, updatedData.total_visitors);
             }
             sessionStorage.setItem('hasVisited', 'true');
           }
@@ -62,23 +77,29 @@ export const useGlobalVisitorCounter = () => {
     initializeCounter();
 
     // Suscribirse a cambios en tiempo real para que TODOS los usuarios vean las actualizaciones
-    const subscription = supabase
-      .channel('visitor_stats_changes')
-      .on(
-        'postgres_changes',
-        {
-          event: 'UPDATE',
-          schema: 'public',
-          table: 'visitor_stats',
-          filter: 'id=eq.1'
-        },
-        (payload) => {
-          if (payload.new && typeof payload.new.total_visitors === 'number') {
-            setVisitorCount(payload.new.total_visitors);
+    let subscription: any = null;
+    try {
+      subscription = supabase
+        .channel('visitor_stats_changes')
+        .on(
+          'postgres_changes',
+          {
+            event: 'UPDATE',
+            schema: 'public',
+            table: 'visitor_stats',
+            filter: 'id=eq.1'
+          },
+          (payload) => {
+            if (payload.new && typeof payload.new.total_visitors === 'number') {
+              setVisitorCount(payload.new.total_visitors);
+              eventBus.emit(AppEvents.VISITOR_COUNT_UPDATED, payload.new.total_visitors);
+            }
           }
-        }
-      )
-      .subscribe();
+        )
+        .subscribe();
+    } catch (error) {
+      console.warn('No se pudo suscribir a cambios en tiempo real:', error);
+    }
 
     // También actualizar cada 30 segundos como respaldo
     const interval = setInterval(async () => {
@@ -98,7 +119,9 @@ export const useGlobalVisitorCounter = () => {
     }, 30000);
 
     return () => {
-      subscription.unsubscribe();
+      if (subscription) {
+        subscription.unsubscribe();
+      }
       clearInterval(interval);
     };
   }, []);

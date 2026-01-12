@@ -6,12 +6,11 @@ import PromotionsSection from './components/PromotionsSection';
 import SuperCombosSection from './components/SuperCombosSection';
 import PaymentMethods from './components/PaymentMethods';
 import FAQ from './components/FAQ';
-import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 via-pink-900 to-blue-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900">
       <Header />
       <HeroBanner />
       <WarningBanner />
@@ -19,7 +18,6 @@ function App() {
       <SuperCombosSection />
       <PaymentMethods />
       <FAQ />
-      <Testimonials />
       <Footer />
     </div>
   );

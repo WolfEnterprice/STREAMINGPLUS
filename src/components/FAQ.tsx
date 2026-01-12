@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -36,37 +36,45 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="py-16 px-4 bg-black/30">
+    <section id="faq" className="py-16 md:py-20 px-4 bg-slate-900/30">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-500/10 rounded-full mb-4">
+            <HelpCircle className="w-8 h-8 text-primary-400" />
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              PREGUNTAS FRECUENTES
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600">
+              Preguntas Frecuentes
             </span>
           </h2>
-          <p className="text-gray-300 text-lg">Resolvemos todas tus dudas</p>
+          <p className="text-slate-300 text-lg">Resolvemos todas tus dudas</p>
         </div>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden">
+            <div 
+              key={index} 
+              className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl overflow-hidden
+                         hover:border-primary-500/50 transition-all duration-200"
+            >
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                className="w-full px-6 py-5 text-left flex items-center justify-between 
+                         hover:bg-slate-800/70 transition-colors group"
               >
-                <h3 className="text-white font-semibold text-lg pr-4">
+                <h3 className="text-white font-semibold text-lg pr-4 group-hover:text-primary-300 transition-colors">
                   {faq.question}
                 </h3>
                 {openIndex === index ? (
-                  <ChevronUp className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                  <ChevronUp className="w-5 h-5 text-primary-400 flex-shrink-0" />
                 ) : (
-                  <ChevronDown className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                  <ChevronDown className="w-5 h-5 text-slate-400 flex-shrink-0 group-hover:text-primary-400 transition-colors" />
                 )}
               </button>
               
               {openIndex === index && (
-                <div className="px-6 pb-4">
-                  <p className="text-gray-300 leading-relaxed">
+                <div className="px-6 pb-5 border-t border-slate-700/50">
+                  <p className="text-slate-300 leading-relaxed pt-4">
                     {faq.answer}
                   </p>
                 </div>

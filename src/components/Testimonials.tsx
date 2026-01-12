@@ -30,51 +30,58 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-16 px-4">
-      <div className="container mx-auto">
+    <section className="py-16 md:py-20 px-4">
+      <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-              CLIENTES FELICES
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
+              Clientes Satisfechos
             </span>
           </h2>
-          <p className="text-gray-300 text-lg">Lo que dicen nuestros usuarios</p>
+          <p className="text-slate-300 text-lg">Lo que dicen nuestros usuarios</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
+            <div 
+              key={index} 
+              className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 
+                         hover:bg-slate-800/70 hover:border-primary-500/50 transition-all duration-300
+                         transform hover:-translate-y-1"
+            >
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center mr-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full 
+                              flex items-center justify-center mr-3 shadow-lg">
                   <User className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <h4 className="text-white font-semibold">{testimonial.name}</h4>
                   <div className="flex space-x-1">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                      <Star key={i} className="w-4 h-4 text-amber-400 fill-current" />
                     ))}
                   </div>
                 </div>
               </div>
               
-              <p className="text-gray-300 text-sm mb-3 leading-relaxed">
+              <p className="text-slate-300 text-sm mb-4 leading-relaxed min-h-[4rem]">
                 "{testimonial.comment}"
               </p>
               
-              <div className="text-xs text-purple-400 font-semibold">
+              <div className="text-xs text-primary-400 font-semibold bg-primary-500/10 rounded-full px-3 py-1 inline-block">
                 {testimonial.service}
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-2xl p-6 inline-block">
-            <h3 className="text-white font-bold text-2xl mb-2">
-              ¡SERVICIO GARANTIZADO!
+        <div className="text-center">
+          <div className="bg-gradient-to-r from-emerald-500/10 to-emerald-600/10 border border-emerald-500/30 
+                        rounded-2xl p-6 md:p-8 inline-block max-w-2xl">
+            <h3 className="text-white font-bold text-2xl md:text-3xl mb-3">
+              ¡Servicio Garantizado!
             </h3>
-            <p className="text-gray-300">
+            <p className="text-slate-300 text-lg">
               Más de 1000 clientes satisfechos nos respaldan
             </p>
           </div>
