@@ -135,20 +135,21 @@ const SuperCombosSection = () => {
   ];
 
   return (
-    <section id="combos" className="py-16 md:py-20 px-4 bg-slate-900/50">
+    <section id="combos" className="py-16 md:py-20 px-4" style={{ backgroundColor: '#1A1F2B' }}>
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
-              SUPER COMBOS
-            </span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" style={{ color: '#00E676' }}>
+            SUPER COMBOS
           </h2>
-          <p className="text-slate-300 text-lg md:text-xl font-semibold mb-4">
+          <p className="text-lg md:text-xl font-semibold mb-4" style={{ color: '#F5F7FA' }}>
             1 pantalla de cada plataforma
           </p>
-          <div className="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2">
-            <span className="text-amber-300 font-semibold text-sm">IMPORTANTE:</span>
-            <span className="text-slate-300 text-sm">Los combos incluyen Disney+ Estándar. Para Disney+ Premium agregar $3.000 adicionales</span>
+          <div className="inline-flex items-center space-x-2 rounded-full px-4 py-2" style={{ 
+            backgroundColor: 'rgba(0, 230, 118, 0.1)',
+            border: '1px solid rgba(0, 230, 118, 0.3)'
+          }}>
+            <span className="font-semibold text-sm" style={{ color: '#00E676' }}>IMPORTANTE:</span>
+            <span className="text-sm" style={{ color: '#9AA4B2' }}>Los combos incluyen Disney+ Estándar. Para Disney+ Premium agregar $3.000 adicionales</span>
           </div>
         </div>
         

@@ -18,15 +18,13 @@ const PromotionsSection = () => {
   ];
 
   return (
-    <section id="promociones" className="py-16 md:py-20 px-4">
+    <section id="promociones" className="py-16 md:py-20 px-4" style={{ backgroundColor: '#0B0F14' }}>
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600">
-              Servicios Individuales
-            </span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" style={{ color: '#F5F7FA' }}>
+            Servicios Individuales
           </h2>
-          <p className="text-slate-300 text-lg md:text-xl font-medium max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl font-medium max-w-2xl mx-auto" style={{ color: '#9AA4B2' }}>
             Accede a tus plataformas favoritas con los mejores precios del mercado
           </p>
         </div>

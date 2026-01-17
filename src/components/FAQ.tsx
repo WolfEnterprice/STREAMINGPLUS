@@ -36,45 +36,62 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="py-16 md:py-20 px-4 bg-slate-900/30">
+    <section id="faq" className="py-16 md:py-20 px-4" style={{ backgroundColor: '#1A1F2B' }}>
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-500/10 rounded-full mb-4">
-            <HelpCircle className="w-8 h-8 text-primary-400" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style={{ backgroundColor: 'rgba(47, 128, 237, 0.1)' }}>
+            <HelpCircle className="w-8 h-8" style={{ color: '#2F80ED' }} />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600">
-              Preguntas Frecuentes
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#F5F7FA' }}>
+            Preguntas Frecuentes
           </h2>
-          <p className="text-slate-300 text-lg">Resolvemos todas tus dudas</p>
+          <p className="text-lg" style={{ color: '#9AA4B2' }}>Resolvemos todas tus dudas</p>
         </div>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl overflow-hidden
-                         hover:border-primary-500/50 transition-all duration-200"
+              className="rounded-xl overflow-hidden transition-all duration-200"
+              style={{ 
+                backgroundColor: '#0B0F14',
+                border: '1px solid rgba(154, 164, 178, 0.2)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(47, 128, 237, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(154, 164, 178, 0.2)';
+              }}
             >
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full px-6 py-5 text-left flex items-center justify-between 
-                         hover:bg-slate-800/70 transition-colors group"
+                className="w-full px-6 py-5 text-left flex items-center justify-between transition-colors group"
+                style={{ backgroundColor: openIndex === index ? '#1A1F2B' : 'transparent' }}
+                onMouseEnter={(e) => {
+                  if (openIndex !== index) {
+                    e.currentTarget.style.backgroundColor = '#1A1F2B';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (openIndex !== index) {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }
+                }}
               >
-                <h3 className="text-white font-semibold text-lg pr-4 group-hover:text-primary-300 transition-colors">
+                <h3 className="font-semibold text-lg pr-4" style={{ color: '#F5F7FA' }}>
                   {faq.question}
                 </h3>
                 {openIndex === index ? (
-                  <ChevronUp className="w-5 h-5 text-primary-400 flex-shrink-0" />
+                  <ChevronUp className="w-5 h-5 flex-shrink-0" style={{ color: '#2F80ED' }} />
                 ) : (
-                  <ChevronDown className="w-5 h-5 text-slate-400 flex-shrink-0 group-hover:text-primary-400 transition-colors" />
+                  <ChevronDown className="w-5 h-5 flex-shrink-0 group-hover:text-tech transition-colors" style={{ color: '#9AA4B2' }} />
                 )}
               </button>
               
               {openIndex === index && (
-                <div className="px-6 pb-5 border-t border-slate-700/50">
-                  <p className="text-slate-300 leading-relaxed pt-4">
+                <div className="px-6 pb-5" style={{ borderTop: '1px solid rgba(154, 164, 178, 0.2)' }}>
+                  <p className="leading-relaxed pt-4" style={{ color: '#9AA4B2' }}>
                     {faq.answer}
                   </p>
                 </div>
